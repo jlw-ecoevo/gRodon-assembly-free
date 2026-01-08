@@ -40,14 +40,14 @@ statsMixture <- function(i,mix_df,bg="all"){
                                   fragments = NA,
                                   bg = bg,
                                   trimlen = 150,
-                                  trimside = "start",
+                                  trimside = "random",
                                   all_metrics = T)
   cu <- gRodon:::getStatistics(gene_file=NA,
                                genes=genes,
                                fragments = NA,
                                bg = bg,
-                               trimlen = 510,
-                               trimside = "start",
+                               trimlen = 450,
+                               trimside = "random",
                                all_metrics = T)
   highly_expressed <- grepl("^(?!.*(methyl|hydroxy)).*0S ribosomal protein",names(genes),ignore.case = T, perl = TRUE)
   growth <- predictGrowth(genes,
@@ -108,4 +108,4 @@ mixture_df <- do.call("rbind",mixture_list) %>%
   as.data.frame(stringsAsFactors=F)
 
 setwd("/gpfs/projects/WeissmanGroup/gRodon_training/")
-save(mixture_df, file = "CodonStatistics_mixtures_broad2.rda")
+save(mixture_df, file = "CodonStatistics_mixtures_broad.rda")
